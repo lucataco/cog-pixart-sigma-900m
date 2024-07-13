@@ -1,0 +1,15 @@
+build:
+  gpu: true
+  python_version: "3.11"
+  python_packages:
+    - "torch==2.2.0"
+    - "torchvision"
+    - "accelerate==0.31.0"
+    - "diffusers==0.29.0"
+    - "transformers==4.41.0"
+    - "numpy==1.26.4"
+    - "sentencepiece"
+  run:
+    - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && chmod +x /usr/local/bin/pget
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
